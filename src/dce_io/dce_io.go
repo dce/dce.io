@@ -25,8 +25,8 @@ func handler(writer http.ResponseWriter, request *http.Request) {
     http.NotFound(writer, request)
   } else {
     destination, _ := redis.String(reply, nil)
-    log.Print("302 ", destination)
-    http.Redirect(writer, request, destination, http.StatusFound)
+    log.Print("301 ", destination)
+    http.Redirect(writer, request, destination, http.StatusMovedPermanently)
   }
 
   conn.Close()
